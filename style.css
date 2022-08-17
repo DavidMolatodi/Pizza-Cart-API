@@ -1,0 +1,75 @@
+
+
+
+.body{
+    padding: 1em;
+    margin: 1em;
+    background-color: cadetblue;
+}
+
+.intro{
+    background-color:coral;
+    border-radius: 0.5em;
+    font-size: large;
+    font-weight: bold;
+}
+
+.cart{
+    padding: 0em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 100%
+    
+    
+}
+.input{
+    
+    width: 15%;
+}
+
+
+
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    background-color: seagreen;
+      
+}
+
+table2 {
+    border-collapse: collapse;
+    width: 100%;
+        
+}
+
+
+
+th, td{
+    text-align: center;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+
+.display{
+   background-color: mediumseagreen
+   
+}
+
+
+.Cart1 {
+    margin-left: 40%;
+    display: flex;
+    background-color: aliceblue;
+    width: 12em;
+    
+}
+.Pizza1{
+    background-color: seagreen;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    
+  
+}
+

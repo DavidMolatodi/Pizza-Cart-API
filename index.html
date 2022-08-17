@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza cart API</title>
+
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="pizza-cart-api.js"></script>
+
+</head>
+
+
+<body>
+    <div class="body" x-data="pizzaCartWithAPIWidget">
+
+        <div x-text="message"></div>
+        <div x-text="cartId"></div>
+
+        <h2>Available Pizza Orders</h2>
+
+
+        <div>
+            Who is buying pizzas: <input type="text" x-model="username" placeholder="enter your name">
+        </div>
+
+        <div>
+            Pizzas from API: <strong x-text="pizzas.length"></strong>
+        </div>
+
+        <div x-show="cart.total.toFixed(2)>0" class="cart">
+            <table>
+                <tr>
+                    <td colspan="5">
+                        <div class="Cart1">
+                            <h2> <img src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                    width="30" alt=""> Shopping Cart</h2>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Flavour</th>
+                    <th>Size</th>
+                    <th>Add/Remove Order</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+
+                <template x-for="pizza in cart.pizzas">
+                    <tr>
+                        <td x-text="pizza.flavour"></td>
+                        <td x-text="pizza.size"></td>
+                        <td><button x-on:click="add(pizza)">+</button>
+                            <button x-on:click="remove(pizza)">-</button>
+                        </td>
+                        <td x-text="pizza.qty"></td>
+                        <td x-text="pizza.total.toFixed(2)"></td>
+                    </tr>
+
+
+                </template>
+
+                <tr>
+                    <td colspan="4">Total</td>
+                    <td>
+                        R<span x-text="cart.total.toFixed(2)"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <div x-show="payNow">
+                            <div class="b1">
+                                <div>
+                                    <label for="">Payment Amount</label>
+                                    <input class="input" type="number" placeholder="Pay Amount" x-model="paymentAmount">
+
+                                    <button x-on:click="pay" class="btn">
+                                        <img src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                            width="30" alt="">PayNow</button>
+                                </div>
+
+                            </div>
+
+                            <div>
+
+                                <label for=""> Payment Feedback </label>
+                                <input class="input" type="text" x-model="paymentMessage">
+                            </div>
+
+                        </div>
+
+                    <td>
+                        <button x-show="!payNow" x-on:click="payNow=true" class="btn5">
+                            <img src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                width="30" alt="">Check out
+                        </button>
+                    </td>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="Pizza1">
+                <table>
+                    <template x-for="pizza in cart.pizzas">
+                        <td>
+                            <div>
+                                <h3 x-text="pizza.flavour"></h3>
+                            </div>
+
+                            <img x-bind:src=" pizzaImage(pizza)" alt="" width="50">
+
+                            <div x-text="pizza.size"></div>
+
+                            <div>
+                                <h3 x-text="pizza.price"></h3>
+                            </div>
+
+                            <button x-on:click="add(pizza)"> <img
+                                    src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                    width="30" alt=""> Buy</button>
+                        </td>
+
+
+
+                    </template>
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="table2">
+            <table>
+                <template x-for="pizza in pizzas">
+
+                    <tr>
+                        <td>
+                            <img x-bind:src="pizzaImage(pizza)" height=50 alt="">
+                        </td>
+                        <td x-text="pizza.flavour"></td>
+                        <td x-text="pizza.size"></td>
+                        <td x-text="pizza.price"></td>
+                        <td>
+                            <button x-on:click="add(pizza)"> <img
+                                    src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
+                                    width="30">
+                                Buy</button>
+                        </td>
+                    </tr>
+                </template>
+            </table>
+        </div>
+
+    </div>
+
+    </div>
+
+
+</body>
+
+</html>
