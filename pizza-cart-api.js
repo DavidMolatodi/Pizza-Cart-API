@@ -109,15 +109,20 @@ document.addEventListener('alpine:init', () => {
             }
             else if (this.paymentAmount >= this.cart.total.toFixed(2)) {
               this.paymentMessage = 'Payment Sucessful!'
-              this.message = this.username + "Enjoy your Pizza"
+              //this.message = this.username + "Enjoy your Pizza"
               setTimeout(() => {
                 this.cart.total = 0
+                this.paymentMessage = '';
+                this.paymentAmount = 0;
+                this.message = '';
+                window.location.reload()
               }, 3000);
 
             } else {
               this.paymentMessage = 'Sorry: Insufficient Amount!'
               setTimeout(() => {
-                this.cart.total = 0
+                this.cart.total = 0 ;
+                
               }, 3000);
             }
 
