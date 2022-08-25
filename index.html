@@ -88,7 +88,7 @@
 
                             </div>
 
-                            <div>
+                            <div x-show="paymentAmount>0">
 
                                 <label for=""> Payment Feedback </label>
                                 <input class="input" type="text" x-model="paymentMessage">
@@ -107,33 +107,7 @@
 
             </table>
 
-            <div class="Pizza1">
-                <table>
-                    <template x-for="pizza in cart.pizzas">
-                        <td>
-                            <div>
-                                <h3 x-text="pizza.flavour"></h3>
-                            </div>
-
-                            <img x-bind:src=" pizzaImage(pizza)" alt="" width="50">
-
-                            <div x-text="pizza.size"></div>
-
-                            <div>
-                                <h3 x-text="pizza.price"></h3>
-                            </div>
-
-                            <button x-on:click="add(pizza)"> <img
-                                    src="https://www.jpole-antenna.com/wp-content/uploads/2012/05/shopping-cart.jpg"
-                                    width="30" alt=""> Buy</button>
-                        </td>
-
-
-
-                    </template>
-                </table>
-
-            </div>
+            
 
 
         </div>
